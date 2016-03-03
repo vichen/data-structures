@@ -1,12 +1,12 @@
 var Stack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  var obj = {};
-  _(obj).extend(stackMethods);
+  var someInstance = {};
+  _(someInstance).extend(stackMethods);
 
-  obj.index = 0;
-  obj.storage = {};
-  return obj;
+  someInstance.index = 0;
+  someInstance.storage = {};
+  return someInstance;
 };
 
 var stackMethods = {};
