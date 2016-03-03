@@ -4,30 +4,30 @@ var Stack = function() {
   var obj = {};
   _(obj).extend(stackMethods);
 
-  obj._size = 0;
-  obj._storage = {};
+  obj.index = 0;
+  obj.storage = {};
   return obj;
 };
 
 var stackMethods = {};
 
 stackMethods.push = function(value) {
-  this._storage[this._size++] = value;
+  this.storage[this.index++] = value;
 };
 
 stackMethods.pop = function() {
-  if (this._size) {
-    this._size--;
+  if (this.index) {
+    this.index--;
   }
-  var result = this._storage[this._size];
+  var result = this.storage[this.index];
 
-  delete this._storage[this._size];
+  delete this.storage[this.index];
 
   return result;
 };
 
 stackMethods.size = function() {
-  return this._size;
+  return this.index;
 };
 
 
