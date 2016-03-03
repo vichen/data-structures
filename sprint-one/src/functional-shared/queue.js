@@ -14,16 +14,16 @@ var Queue = function() {
 var queueMethods = {};
 
 queueMethods.enqueue = function(value) {
-	this.oldestIndex++;
-	this.storage[this.oldestIndex];
-}
+  this.oldestIndex++;
+  this.storage[this.oldestIndex] = value;
+};
 
 queueMethods.dequeue = function() {
-	var temp = this.storage[this.newestIndex];
-	this.newestIndex++;
-	return temp;
-}
+  var temp = this.storage[this.newestIndex];
+  this.newestIndex++;
+  return temp;
+};
 
 queueMethods.size = function() {
-	return Math.max(0,this.oldestIndex - this.newestIndex);
-}
+  return Math.max(0, this.oldestIndex - this.newestIndex);
+};
