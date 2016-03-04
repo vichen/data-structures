@@ -16,29 +16,46 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-
-  if (this.value === target) {
+  if (this.children.value === target) {
     return true;
+  } else if (this.children === []) {
+    return false;
+  } else {
+    this.children.forEach(function(child, index) {
+      if (child.value === target) {
+        console.log('true');
+        return true;
+      } else {
+        return this.children.contains(target);
+      }
+    });
   }
-  
-  var result = false;
-  for (var i = 0; i < this.children.length; i++) {
-    result = this.children[i].contains(target); 
-  }
-  
-  return result;
-  
+
+
+
   // if (this.value === target) {
   //   return true;
   // }
-
+  
+  // var result = false;
   // for (var i = 0; i < this.children.length; i++) {
-  //   if (this.children[i].value === target) {
-  //     return true;
-  //   } else {
-  //     return this.children[i].contains(target);
+  //   result = this.children[i].contains(target); 
+  // }
+  
+  // return result;
+  
+  // if (this.value === target) {
+  //   return true;
+  // } else if (this.children !== []) {
+  //   for (var i = 0; i < this.children.length; i++) {
+  //     if (this.children[i].value === target) {
+  //       return true;
+  //     } else {
+  //       return this.children[i].contains(target);
+  //     }
   //   }
   // }
+
   // return false;
   
 };
