@@ -5,39 +5,29 @@ var Tree = function(value) {
   newTree.value = value;
   newTree.children = [];
 
-
-
   return newTree;
 };
 
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  var child = Tree(value);
+  var child = new Tree(value);
   this.children.push(child);
 };
 
 treeMethods.contains = function(target) {
-  /*
-  if (this.value === target) {
-    return true;
-  }
-  return _.contains(this.children, target);
-  */
-
   
   if (this.value === target) {
     return true;
   }
 
   for (var i = 0; i < this.children.length; i++) {
-    if (this.value === target) {
+    if (this.children[i].value === target) {
       return true;
     } else {
       return this.children[i].contains(target);
     }
   }
-  
   return false;
   
 };
@@ -49,4 +39,6 @@ treeMethods.contains = function(target) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ addChild: O(1);
+
  */
