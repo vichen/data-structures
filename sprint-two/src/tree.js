@@ -16,37 +16,20 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  if (this.value === target) {
+    return true;
+  }
+
   var result = false;
-  var helperFunc = function() {
-    if (this.value === target) {
-      result = true;
-    }
-    
-    // var result = false;
-    // for (var i = 0; i < this.children.length; i++) {
-    //   result = this.children[i].contains(target); 
-    // }
-    
-    // return result;
-    
-    // if (this.value === target) {
-    //   return true;
-    // }
 
-    for (var i = 0; i < this.children.length; i++) {
-      if (this.children[i].value === target) {
-        result = true;
-      } else if (this.children[i].children.length > 0) {
-        return this.children[i].contains(target);
-      }
+  for (var i = 0; i < this.children.length; i++) {
+    result = this.children[i].contains(target);
+    if (result) {
+      return true;
     }
-  };
-
-  helperFunc();
+  }
   return result;
-  
 };
-
 
 //{value: 1, children: []} --> add child 2, child 3
 //{value: 1, children: [{value: 2, children: []},
