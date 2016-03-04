@@ -4,14 +4,15 @@
 
 var Set = function() {
   var set = Object.create(setPrototype);
-  set.storage = [];
+  set.storage = storage;
   return set;
 };
 
 var setPrototype = {};
 
 setPrototype.add = function(item) {
-  this.storage.push[item];
+  this.storage = [];
+  this.storage = this.storage.push[item];
   
 };
 
