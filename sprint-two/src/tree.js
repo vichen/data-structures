@@ -18,6 +18,14 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  /*
+  if (this.value === target) {
+    return true;
+  }
+  return _.contains(this.children, target);
+  */
+
+  
   if (this.value === target) {
     return true;
   }
@@ -31,6 +39,7 @@ treeMethods.contains = function(target) {
   }
   
   return false;
+  
 };
 
 
