@@ -70,10 +70,8 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
   for (var prop in this.storage) {
-    console.log('prop: ', prop);
     cb(prop);
   }
-  console.log('storage: ', this.storage);
 };
 
 /* 
