@@ -16,19 +16,30 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  
+
   if (this.value === target) {
     return true;
   }
-
+  
+  var result = false;
   for (var i = 0; i < this.children.length; i++) {
-    if (this.children[i].value === target) {
-      return true;
-    } else {
-      return this.children[i].contains(target);
-    }
+    result = this.children[i].contains(target); 
   }
-  return false;
+  
+  return result;
+  
+  // if (this.value === target) {
+  //   return true;
+  // }
+
+  // for (var i = 0; i < this.children.length; i++) {
+  //   if (this.children[i].value === target) {
+  //     return true;
+  //   } else {
+  //     return this.children[i].contains(target);
+  //   }
+  // }
+  // return false;
   
 };
 
