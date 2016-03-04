@@ -16,47 +16,34 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  if (this.children.value === target) {
-    return true;
-  } else if (this.children === []) {
-    return false;
-  } else {
-    this.children.forEach(function(child, index) {
-      if (child.value === target) {
-        console.log('true');
-        return true;
-      } else {
-        return this.children.contains(target);
+  var result = false;
+  var helperFunc = function() {
+    if (this.value === target) {
+      result = true;
+    }
+    
+    // var result = false;
+    // for (var i = 0; i < this.children.length; i++) {
+    //   result = this.children[i].contains(target); 
+    // }
+    
+    // return result;
+    
+    // if (this.value === target) {
+    //   return true;
+    // }
+
+    for (var i = 0; i < this.children.length; i++) {
+      if (this.children[i].value === target) {
+        result = true;
+      } else if (this.children[i].children.length > 0) {
+        return this.children[i].contains(target);
       }
-    });
-  }
+    }
+  };
 
-
-
-  // if (this.value === target) {
-  //   return true;
-  // }
-  
-  // var result = false;
-  // for (var i = 0; i < this.children.length; i++) {
-  //   result = this.children[i].contains(target); 
-  // }
-  
-  // return result;
-  
-  // if (this.value === target) {
-  //   return true;
-  // } else if (this.children !== []) {
-  //   for (var i = 0; i < this.children.length; i++) {
-  //     if (this.children[i].value === target) {
-  //       return true;
-  //     } else {
-  //       return this.children[i].contains(target);
-  //     }
-  //   }
-  // }
-
-  // return false;
+  helperFunc();
+  return result;
   
 };
 
