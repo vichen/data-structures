@@ -9,10 +9,10 @@ var BinarySearchTree = function(value) {
   bst.value = value;
   bst.left = null;
   bst.right = null;
+  bst.visited = false;
   return bst;
 };
 
-//{value: 5, left:{}}
 
 var bstMethods = {
   insert: function(val) {
@@ -34,15 +34,30 @@ var bstMethods = {
     if (val === this.value) {
       return true;
     }
-    var result = false;
-    if (val < this.value) {
-      result = this.left.contains(val);
-    } else if (val > this.value) {
-      result = this.right.contains(val);
-    } 
-
+    if (val < this.value && this.left !== null && this.left.contains(val)) {
+      return true;
+    }
+    if (val > this.value && this.right !== null && this.right.contains(val)) {
+      return true;
+    }
+    return false;
   },
-  depthFirstLog: function(val) {}
+  depthFirstLog: function(cb) {
+    if (this !== null) {
+      cb.call(null, this.value);
+      if (this.right !== null) {
+        this.right.depthFirstLog(cb);
+      }
+      if (this.left !== null) {
+        this.left.depthFirstLog(cb);
+      }
+      
+      
+      
+    }
+    
+  }
+  
 };
 
 
