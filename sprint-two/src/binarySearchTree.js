@@ -6,9 +6,9 @@
 
 var BinarySearchTree = function(value) {
   var bst = Object.create(bstMethods);
-  this.value = value;
-  this.left = {};
-  this.right = {};
+  bst.value = value;
+  bst.left = {};
+  bst.right = {};
   return bst;
 };
 
@@ -16,14 +16,13 @@ var bstMethods = {
   insert: function(val) {
     if (val < this.value) {
       if (this.left === null) {
-        this.left[val] = bst(val);
-        console.log(this.left[val]);
+        this.left = BinarySearchTree(val);
       } else {
         this.left.insert(val);
       }
     } else if (val > this.value) {
       if (this.right === null) {
-        this.right[val] = bst(val);
+        this.right = BinarySearchTree(val);
       } else {
         this.right.insert(val); 
       }
