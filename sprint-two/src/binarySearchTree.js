@@ -7,21 +7,23 @@
 var BinarySearchTree = function(value) {
   var bst = Object.create(bstMethods);
   bst.value = value;
-  bst.left = {};
-  bst.right = {};
+  bst.left = null;
+  bst.right = null;
   return bst;
 };
+
+//{value: 5, left:{}}
 
 var bstMethods = {
   insert: function(val) {
     if (val < this.value) {
-      if (this.left === null) {
+      if (!this.left) {
         this.left = BinarySearchTree(val);
       } else {
         this.left.insert(val);
       }
     } else if (val > this.value) {
-      if (this.right === null) {
+      if (!this.right) {
         this.right = BinarySearchTree(val);
       } else {
         this.right.insert(val); 
@@ -32,15 +34,13 @@ var bstMethods = {
     if (val === this.value) {
       return true;
     }
-    if (val < this.value && this.left === undefined) {
-      return false;
-    } else if (val > this.value && this.right === undefined) {
-      return false;
-    } else if (val < this.value && this.left !== undefined) {
-      this.value.left.contains(val);
-    } else {
-      this.value.right.contains(val);
-    }
+    var result = false;
+    if (val < this.value) {
+      result = this.left.contains(val);
+    } else if (val > this.value) {
+      result = this.right.contains(val);
+    } 
+
   },
   depthFirstLog: function(val) {}
 };
