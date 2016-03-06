@@ -6,9 +6,9 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  var obj = this._storage.get(index) || {};
-  obj[k] = v;
-  this._storage.set(index, obj);
+  var bucket = this._storage.get(index) || {};
+  bucket[k] = v;
+  this._storage.set(index, bucket);
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -22,11 +22,11 @@ HashTable.prototype.retrieve = function(k) {
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  var obj = this._storage.get(index) || {};
-  if (Object.keys(obj).length === 1) {
+  var bucket = this._storage.get(index) || {};
+  if (Object.keys(bucket).length === 1) {
     this._storage.set(index, undefined);
   } else {
-    delete obj[k];
+    delete bucket[k];
   }
 };
 
@@ -34,6 +34,9 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ insert: O(1)
+ retrieve: O(1)
+ remove: (1)
  */
 
 
